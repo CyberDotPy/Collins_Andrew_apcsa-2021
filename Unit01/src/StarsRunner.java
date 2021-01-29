@@ -1,10 +1,10 @@
 //© A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Andrew Collins
+//Date - 1/28/21
+//Class - Period 3
+//Lab  - Unit 1 StarsRunner
 
 import static java.lang.System.*;
 
