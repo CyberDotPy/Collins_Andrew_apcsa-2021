@@ -101,7 +101,8 @@ public class Shuffler {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		for (int k = values.length - 1; k > 0; k--)
 		{
-			int r = (int)(Math.random() * k);
+			int num = k + 1;
+			int r = (int)(Math.random() * num);
 			int temp = values[k];
 			
 			values[k] = values[r];

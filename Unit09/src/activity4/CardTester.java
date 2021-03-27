@@ -22,13 +22,13 @@ public class CardTester {
 		
 		System.out.println("matches: " + aceDiamonds1.matches(twoClubs1));
 		
-		System.out.println("two of clubs 1 tests");
+		System.out.println("\ntwo of clubs 1 tests");
 		System.out.println(twoClubs1.rank());
 		System.out.println(twoClubs1.suit());
 		System.out.println(twoClubs1.pointValue());
 		System.out.println(twoClubs1.toString());
 		
-		System.out.println("two of clubs 2 tests");
+		System.out.println("\ntwo of clubs 2 tests");
 		System.out.println(twoClubs2.rank());
 		System.out.println(twoClubs2.suit());
 		System.out.println(twoClubs2.pointValue());
