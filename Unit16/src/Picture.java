@@ -407,6 +407,20 @@ public class Picture extends SimplePicture
     this.write("src/images/collage.jpg");
   }
   
+ public void myCollage()
+ {
+	 Picture flower = new Picture("src/images/flower1.jpg");
+	 this.copy(flower,0,35);
+	 this.copy(flower,0,35);
+	 this.copy(flower,100,35);
+	 this.zeroBlue();
+	 this.zeroRed();
+	 this.copy(flower,0,35);
+	 this.mirrorVertical();
+	 this.negate();
+	 this.write("src/images/collage.jpg");
+ }
+  
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
@@ -468,6 +482,78 @@ public class Picture extends SimplePicture
               leftPixel.setColor(Color.WHITE);
           }
       }
+  }
+  
+  public void chromakey(Picture newBack)
+  {
+	  Pixel fromPixel = null;
+	  Pixel toPixel = null;
+	  Pixel[][] fromPixels = newBack.getPixels2D();
+	  Pixel[][] toPixels = this.getPixels2D();
+	  
+	  for (int row = 0; row < this.getHeight(); row++)
+	  {
+		  for (int col = 0; col < this.getWidth(); col++)
+		  {
+			  toPixel = toPixels[row][col];
+			  
+			  if (toPixel.getBlue() > toPixel.getRed() && toPixel.getBlue() > toPixel.getGreen())
+			  {
+				  fromPixel = fromPixels[row][col];
+				  toPixel.setColor(fromPixel.getColor());
+			  }
+		  }
+	  }
+  }
+  
+  public void getCountRedOverValue(int val)
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel pixelObj = null;
+	  int cnt = 0;
+	  
+	  for (int r = 0; r < this.getHeight(); r++)
+	  {
+		  for (int c = 0; c < this.getWidth(); c++)
+		  {
+			  pixelObj = pixels[r][c];
+			  if (pixelObj.getRed() > val)
+				  cnt++;
+		  }
+	  }
+	  
+	  System.out.println("There are " + cnt + " pixels over the red value of " + val);
+  }
+  
+  public void setRedToHalfValueInTopHalf()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel pixelObj = null;
+	  
+	  for (int r = 0; r < this.getHeight() / 2; r++)
+	  {
+		  for (int c = 0; c < this.getWidth(); c++)
+		  {
+			  pixelObj = pixels[r][c];
+			  pixelObj.setRed(pixelObj.getRed()/2);
+		  }
+	  }
+  }
+  
+  public void clearBlueOverValue(int val)
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel pixelObj = null;
+	  
+	  for (int r = 0; r < this.getHeight() / 2; r++)
+	  {
+		  for (int c = 0; c < this.getWidth(); c++)
+		  {
+			  pixelObj = pixels[r][c];
+			  if (pixelObj.getBlue() > val)
+				  pixelObj.setBlue(0);
+		  }
+	  }
   }
   
   /* Main method for testing - each class in Java can have a main 

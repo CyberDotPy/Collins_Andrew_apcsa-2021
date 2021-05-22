@@ -142,9 +142,11 @@ public class PictureTester
     canvas.explore();
   }
   
-  public static void testmyCollage()
+  public static void testMyCollage()
   {
-    
+	  Picture canvas = new Picture("src/images/640x480.jpg");
+	  canvas.myCollage();
+	  canvas.explore();
   }
   
   public static void testCopy()
@@ -170,6 +172,40 @@ public class PictureTester
       swan.explore();
   }
   
+  public static void testChromakey()
+  {
+	  Picture mark = new Picture("src/images/blue-mark.jpg");
+	  Picture moonBackground = new Picture("src/images/moon-surface.jpg");
+	  mark.explore();
+	  moonBackground.explore();
+	  mark.chromakey(moonBackground);
+	  mark.explore();
+  }
+  
+  public static void testGetCountRedOverValue(int val)
+  {
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  beach.explore();
+	  beach.getCountRedOverValue(val);
+  }
+  
+  public static void testSetRedToHalfValueInTopHalf()
+  {
+	  Picture jenny = new Picture("src/images/jenny-red.jpg");
+	  jenny.explore();
+	  jenny.setRedToHalfValueInTopHalf();
+	  jenny.explore();
+  }
+  
+  public static void testClearBlueOverValue(int val)
+  {
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  beach.explore();
+	  beach.clearBlueOverValue(val);
+	  beach.explore();
+  }
+  
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -192,16 +228,14 @@ public class PictureTester
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
-    //testMirrorDiagonal();
     //testCollage();
     //testCopy();
+	//testMyCollage();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
-    //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
-    //testGetAverageForColumn(0);
   }
 }
